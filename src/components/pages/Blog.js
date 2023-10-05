@@ -1,24 +1,39 @@
 import React from 'react';
 
-export default function Blog() {
+const Project = ({ title, description, webLink, gitLink }) => {
   return (
-    <div>
-      <h1>Blog Page</h1>
-      <p>
-        Donec a volutpat quam. Curabitur nec varius justo, sed rutrum ligula.
-        Curabitur pellentesque turpis sit amet eros iaculis, a mollis arcu
-        dictum. Ut vel ante eget massa ornare placerat. Etiam nisl orci, finibus
-        sodales volutpat et, hendrerit ut dolor. Suspendisse porta dictum nunc,
-        sed pretium risus rutrum eget. Nam consequat, ligula in faucibus
-        vestibulum, nisi justo laoreet risus, luctus luctus mi lacus sit amet
-        libero. Class aptent taciti sociosqu ad litora torquent per conubia
-        nostra, per inceptos himenaeos. Mauris pretium condimentum tellus eget
-        lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-        Donec placerat accumsan mi, ut congue neque placerat eu. Donec nec ipsum
-        in velit pellentesque vehicula sit amet at augue. Maecenas aliquam
-        bibendum congue. Pellentesque semper, lectus non ullamcorper iaculis,
-        est ligula suscipit velit, sed bibendum turpis dui in sapien.
-      </p>
+    <div className='project'>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <div className='project-links'>
+        <a href={webLink}>
+          Demo
+        </a>
+        <a href={gitLink}>
+          Github Repository
+        </a>
+      </div>
     </div>
+  );
+};
+
+export default function Blog() {
+  const projects = [
+    {
+      title: 'social-network-api',
+      description: 'No SQL',
+      webLink: 'https://drive.google.com/file/d/12QA7X0JyaHDI8h-SjYVF-oWRJJPpK4GU/view',
+      gitLink: 'https://github.com/ashortaznkid/social-network-api'
+    }
+  ]
+  return (
+    <section>
+      <h2>Portfolio</h2>
+      <div>
+        {projects.map((project, index) => (
+          <Project key={index} {...project} />
+        ))}
+      </div>
+    </section>
   );
 }
